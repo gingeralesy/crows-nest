@@ -6,10 +6,25 @@
 
 (in-package :things.t-sdl)
 
+;; Local generics
+
+(defgeneric update (updatable handler)
+  (:documentation "Handles updatable's update changes."))
+
+(defgeneric draw (drawable handler)
+  (:documentation "Draws the drawable on the handler."))
+
 ;; T-SDL class
 
 (defclass t-sdl (handler)
-  ()
+  ((updatables
+    :initform nil
+    :accessor updatables
+    :documentation "List of objects with update method implementation.")
+   (drawables
+    :initform nil
+    :accessor drawables
+    :documentation "List of objects with draw method implementation."))
   (:documentation "This is the main handler for the SDL experiment screen."))
 
 (defmethod startup ((handler t-sdl))
@@ -24,9 +39,13 @@
         (sdl:push-quit-event))
       (:idle ()
         ;; Update here
+        (mapcar #'update (updatables handler))
              
         (sdl:clear-display sdl:*black*)
         ;; Draw here
+        (mapcar #'draw (drawables handler))
         
         (sdl:update-display)))))
+
+;;;; Updatable objects
 
