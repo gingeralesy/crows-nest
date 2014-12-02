@@ -13,8 +13,8 @@
         (setf (cdr (cdr queue)) n)
         (setf (cdr queue) (last (cdr queue))))
       (let ((l (list item)))
-        (setf queue (cons l (last l)))))
-  nil)
+        (setf queue (cons l l))))
+  queue)
 
 (defun qpop (queue)
   "Pops a value from a queue."
