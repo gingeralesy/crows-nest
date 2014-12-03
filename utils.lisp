@@ -10,8 +10,8 @@
   "Pushes a value into a queue."
   (if queue
       (let ((n (list item)))
-        (setf (cdr (cdr queue)) n)
-        (setf (cdr queue) (last (cdr queue))))
+        (setf (cddr queue) n)
+        (setf (cdr queue) (cddr queue)))
       (let ((l (list item)))
         (setf queue (cons l l))))
   queue)
