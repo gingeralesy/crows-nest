@@ -8,7 +8,7 @@
 
 (defun qpush (queue item)
   "Pushes a value into a queue."
-  (if queue
+  (if (and queue (car queue))
       (let ((n (list item)))
         (setf (cddr queue) n)
         (setf (cdr queue) (cddr queue)))
