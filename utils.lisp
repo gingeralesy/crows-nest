@@ -18,8 +18,10 @@
 
 (defun qpop (queue)
   "Pops a value from a queue."
-  (let ((v (car (car queue))))
-    (setf (car queue) (cdr (car queue)))
+  (let ((v (caar queue)))
+    (setf (car queue) (cdar queue))
+    (unless (car queue)
+      (setf (cdr queue) nil))
     v))
 
 (defun qlength (queue)
