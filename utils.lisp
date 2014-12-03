@@ -13,7 +13,11 @@
         (setf (cddr queue) n)
         (setf (cdr queue) (cddr queue)))
       (let ((l (list item)))
-        (setf queue (cons l l))))
+        (if queue
+            (progn
+              (setf (car queue) l)
+              (setf (cdr queue) l))
+            (setf queue (cons l l)))))
   queue)
 
 (defun qpop (queue)
