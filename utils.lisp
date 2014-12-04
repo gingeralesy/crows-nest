@@ -8,15 +8,13 @@
 
 (defun qpush (queue item)
   "Pushes a value into a queue."
-  (if (and queue (car queue))
-      (let ((n (list item)))
-        (setf (cddr queue) n)
-        (setf (cdr queue) (cddr queue)))
-      (let ((l (list item)))
+  (let ((l (list item)))
+    (if (and queue (car queue))
+        (setf (cddr queue) l
+              (cdr queue) (cddr queue))
         (if queue
-            (progn
-              (setf (car queue) l)
-              (setf (cdr queue) l))
+            (setf (car queue) l
+                  (cdr queue) l)
             (setf queue (cons l l)))))
   queue)
 
