@@ -2,7 +2,7 @@
 (defpackage :things.utils
   (:documentation "Various useful and useless utils.")
   (:use #:cl)
-  (:export #:qpush #:qpop))
+  (:export #:qpush #:qpop #:qmake))
 
 (in-package :things.utils)
 
