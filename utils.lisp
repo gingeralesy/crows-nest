@@ -6,16 +6,18 @@
 
 (in-package :things.utils)
 
+(defun qmake ()
+  '(nil))
+
 (defun qpush (queue item)
   "Pushes a value into a queue."
   (let ((l (list item)))
     (if (and queue (car queue))
         (setf (cddr queue) l
               (cdr queue) (cddr queue))
-        (if queue
+        (when queue
             (setf (car queue) l
-                  (cdr queue) l)
-            (setf queue (cons l l)))))
+                  (cdr queue) l))))
   queue)
 
 (defun qpop (queue)
