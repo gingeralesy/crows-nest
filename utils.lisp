@@ -24,13 +24,7 @@
 
 (defun qpop (queue)
   "Pops a value from a queue."
-  (unless queue
-    (error "Queue cannot be NIL."))
-
-  (let ((value (pop (car queue))))
-    (unless (caar queue)
-      (setf (cdr queue) nil))
-    value))
+  (pop (car queue)))
 
 (defun qlength (queue)
   "Returns the size of the queue."
