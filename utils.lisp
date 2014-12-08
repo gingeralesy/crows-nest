@@ -27,8 +27,7 @@
   (unless queue
     (error "Queue cannot be NIL."))
 
-  (let ((value (caar queue)))
-    (setf (car queue) (cdar queue))
+  (let ((value (pop (car queue))))
     (unless (caar queue)
       (setf (cdr queue) nil))
     value))
