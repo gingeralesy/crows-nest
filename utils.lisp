@@ -14,12 +14,12 @@
   (unless queue
     (error "Queue cannot be NIL."))
   
-  (let ((newItem (cons item nil)))
+  (let ((new-item (cons item nil)))
     (if (car queue)
-        (setf (cddr queue) newItem
-              (cdr queue) newItem)
-        (setf (car queue) newItem
-              (cdr queue) newItem)))
+        (setf (cddr queue) new-item
+              (cdr queue) new-item)
+        (setf (car queue) new-item
+              (cdr queue) new-item)))
   queue)
 
 (defun qpop (queue)
