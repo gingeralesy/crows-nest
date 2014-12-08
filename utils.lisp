@@ -11,22 +11,27 @@
 
 (defun qpush (queue item)
   "Pushes a value into a queue."
-  (let ((l (list item)))
-    (if (and queue (car queue))
-        (setf (cddr queue) l
-              (cdr queue) (cddr queue))
-        (when queue
-            (setf (car queue) l
-                  (cdr queue) l))))
+  (unless queue
+    (error "Queue cannot be NIL."))
+  
+  (let ((newItem (cons item nil)))
+    (if (car queue)
+        (setf (cddr queue) newItem
+              (cdr queue) newItem)
+        (setf (car queue) newItem
+              (cdr queue) newItem)))
   queue)
 
 (defun qpop (queue)
   "Pops a value from a queue."
-  (let ((v (caar queue)))
+  (unless queue
+    (error "Queue cannot be NIL."))
+
+  (let ((value (caar queue)))
     (setf (car queue) (cdar queue))
-    (unless (car queue)
+    (unless (caar queue)
       (setf (cdr queue) nil))
-    v))
+    value))
 
 (defun qlength (queue)
   "Returns the size of the queue."
