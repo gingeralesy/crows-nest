@@ -2,8 +2,8 @@
 (defpackage :things.utils
   (:documentation "Various useful and useless utils.")
   (:use #:cl)
-  (:export #:queue-push #:queue-pop #:queue-peek #:queue-make
-           #:queue-length #:queue-empty-p))
+  (:export #:queue-push #:queue-pop #:queue-front #:queue-back
+           #:queue-make #:queue-length #:queue-empty-p))
 
 (in-package :things.utils)
 
@@ -23,9 +23,13 @@
   "Pops a value from a queue."
   (pop (car queue)))
 
-(defun queue-peek (queue)
+(defun queue-front (queue)
   "Returns the value at the head of the queue without popping it."
   (caar queue))
+
+(defun queue-back (queue)
+  "Returns the value at the tail of the queue."
+  (cadr queue))
 
 (defun queue-length (queue)
   "Returns the size of the queue."
