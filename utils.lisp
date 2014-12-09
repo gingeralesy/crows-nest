@@ -2,7 +2,7 @@
 (defpackage :things.utils
   (:documentation "Various useful and useless utils.")
   (:use #:cl)
-  (:export #:qpush #:qpop #:qmake #:qlength))
+  (:export #:qpush #:qpop #:qmake #:qlength #:qempty-p))
 
 (in-package :things.utils)
 
@@ -25,3 +25,9 @@
 (defun qlength (queue)
   "Returns the size of the queue."
   (length (car queue)))
+
+(defun qempty-p (queue)
+  "Checks if the queue is empty of content."
+  (if (car queue)
+      nil
+      t))
