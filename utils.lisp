@@ -2,14 +2,15 @@
 (defpackage :things.utils
   (:documentation "Various useful and useless utils.")
   (:use #:cl)
-  (:export #:qpush #:qpop #:qmake #:qlength #:qempty-p))
+  (:export #:queue-push #:queue-pop #:queue-make
+           #:queue-length #:queue-empty-p))
 
 (in-package :things.utils)
 
-(defun qmake ()
+(defun queue-make ()
   (cons nil nil))
 
-(defun qpush (queue item)
+(defun queue-push (queue item)
   "Pushes a value into a queue."
   (let ((new-item (cons item nil)))
     (setf (cdr queue)
@@ -18,16 +19,17 @@
               (setf (car queue) new-item))))
   queue)
 
-(defun qpop (queue)
+(defun queue-pop (queue)
   "Pops a value from a queue."
   (pop (car queue)))
 
-(defun qlength (queue)
+(defun queue-length (queue)
   "Returns the size of the queue."
   (length (car queue)))
 
-(defun qempty-p (queue)
+(defun queue-empty-p (queue)
   "Checks if the queue is empty of content."
   (if (car queue)
       nil
       t))
+
