@@ -11,9 +11,6 @@
 
 (defun qpush (queue item)
   "Pushes a value into a queue."
-  (unless queue
-    (error "Queue cannot be NIL."))
-  
   (let ((newItem (cons item nil)))
     (if (car queue)
         (setf (cddr queue) newItem
