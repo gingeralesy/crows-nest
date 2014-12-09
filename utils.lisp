@@ -7,7 +7,7 @@
 (in-package :things.utils)
 
 (defun qmake ()
-  (list nil))
+  (cons nil nil))
 
 (defun qpush (queue item)
   "Pushes a value into a queue."
