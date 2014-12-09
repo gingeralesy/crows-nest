@@ -11,12 +11,11 @@
 
 (defun qpush (queue item)
   "Pushes a value into a queue."
-  (let ((newItem (cons item nil)))
-    (if (car queue)
-        (setf (cddr queue) newItem
-              (cdr queue) newItem)
-        (setf (car queue) newItem
-              (cdr queue) newItem)))
+  (let ((new-item (cons item nil)))
+    (setf (cdr queue)
+          (if (car queue)
+              (setf (cddr queue) new-item)
+              (setf (car queue) new-item))))
   queue)
 
 (defun qpop (queue)
