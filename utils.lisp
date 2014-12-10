@@ -27,9 +27,17 @@
   "Returns the value at the head of the queue without popping it."
   (caar queue))
 
+(defun (setf queue-front) (new-value queue)
+  "Replaces the value in the front of the queue with a new one."
+  (setf (caar queue) new-value))
+
 (defun queue-back (queue)
   "Returns the value at the tail of the queue."
   (cadr queue))
+
+(defun (setf queue-back) (new-value queue)
+  "Replaces the value in the back of the queue with a new one."
+  (setf (cadr queue) new-value))
 
 (defun queue-length (queue)
   "Returns the size of the queue."
