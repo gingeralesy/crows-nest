@@ -45,5 +45,5 @@
 
 (defun queue-empty-p (queue)
   "Checks if the queue is empty of content."
-  (not (car queue)))
+  (null (car queue)))
 
