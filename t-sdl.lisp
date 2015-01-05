@@ -6,6 +6,15 @@
 
 (in-package :things.t-sdl)
 
+;; Local classes
+
+(defclass message-processor ()
+  ((message-type
+    :initform (error "Processor must have a message type.")
+    :accessor message-type
+    :documentation "Type of the message this processor handles."))
+  (:documentation "Processes messages of a type and handles related effects."))
+
 ;; Local generics
 
 (defgeneric update (updatable handler)
@@ -13,6 +22,9 @@
 
 (defgeneric draw (drawable handler)
   (:documentation "Draws the drawable on the handler."))
+
+(defgeneric handle-message (message-processor message)
+  (:documentation "Handles the event message."))
 
 ;; T-SDL class
 
