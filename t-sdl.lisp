@@ -15,6 +15,27 @@
     :documentation "Type of the message this processor handles."))
   (:documentation "Processes messages of a type and handles related effects."))
 
+(defclass message ()
+  ((message-type
+    :initform (error "Message must have a type.")
+    :accessor message-type
+    :documentation "Type of this message.")
+   (affected
+    :initform nil
+    :accessor affected
+    :documentation "List of those affected by this message's event.")))
+
+(defclass game-object ()
+  ((id
+    :initform (error "Object must have an id.")
+    :accessor id
+    :documentation "Unique id for the object.")
+   (name
+    :initform (error "Object must have a name.")
+    :accessor name
+    :documentation "Name for the object."))
+  (:documentation "Object within the game."))
+
 ;; Local generics
 
 (defgeneric update (updatable handler)
