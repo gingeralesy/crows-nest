@@ -25,7 +25,15 @@
     :accessor affected
     :documentation "List of those affected by this message's event.")))
 
-(defclass game-object ()
+(defclass updatable ()
+  ()
+  (:documentation "Updatable class."))
+
+(defclass drawable ()
+  ()
+  (:documentation "Drawable class."))
+
+(defclass game-object (updatable)
   ((id
     :initform (error "Object must have an id.")
     :accessor id
@@ -35,6 +43,10 @@
     :accessor name
     :documentation "Name for the object."))
   (:documentation "Object within the game."))
+
+(defclass sprite (game-object drawable)
+  ()
+  (:documentation "Game object with graphics."))
 
 ;; Local generics
 
