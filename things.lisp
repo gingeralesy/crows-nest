@@ -10,6 +10,6 @@
 
 (defun main (&optional name)
   "Starts up the Qt experiment program"
-  (let ((thing (make-instance 't-qt))))
+  (let ((thing (make-instance 't-qt)))
     (startup thing)))
 
