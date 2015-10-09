@@ -16,6 +16,7 @@
 (defmethod startup ((handler t-qt))
   "Starts up the QT handler."
   ;; Make QApplication and start it up here
+  (with-main-window (window (make-instance 'main-window)))
   NIL)
 
 ;; Qt specific defines
