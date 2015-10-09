@@ -9,5 +9,5 @@
                (:file "things" 
                 :depends-on ("t-qt")
                 :depends-on ("generics")))
-  :depends-on (:qtools :things-headless))
+  :depends-on (:qtools :qtcore :qtgui :q+ :things-headless))
 
