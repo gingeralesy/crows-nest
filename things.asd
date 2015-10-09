@@ -6,10 +6,8 @@
   :description "Experiments with CL"
   :components ((:file "generics")
                (:file "t-qt" :depends-on ("generics"))
-               (:file "t-sdl" :depends-on ("generics"))
                (:file "things" 
                 :depends-on ("t-qt")
-                :depends-on ("t-sdl")
                 :depends-on ("generics")))
-  :depends-on (:lispbuilder-sdl :qt :things-headless))
+  :depends-on (:qtools :things-headless))
 

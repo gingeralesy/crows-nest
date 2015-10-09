@@ -44,10 +44,6 @@
     :documentation "Name for the object."))
   (:documentation "Object within the game."))
 
-(defclass sprite (game-object drawable)
-  ()
-  (:documentation "Game object with graphics."))
-
 ;; Local generics
 
 (defgeneric update (updatable handler)
@@ -94,3 +90,6 @@
 
 ;;;; Updatable objects
 
+(defclass triangle (updatable drawable)
+  ()
+  (:documentation "Triangle shaped sprite thing."))
